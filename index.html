@@ -26,24 +26,25 @@
 
   <body>
     <div class="mega-container">
-      <section class="nav-bar" data-aos="zoom-out">
-        <ul>
-          <li><a href="#home">HOME</a></li>
-          <li><a href="#about">ABOUT</a></li>
-          <li><a href="#projects">PROJECTS</a></li>
-          <li><a href="#contact">CONTACT</a></li>
+      <nav class="navbar">
+        <ul class="navbar-menu">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="#projects">Projects</a></li>
         </ul>
-      </section>
+        <div class="navbar-toggle">
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+        </div>
+      </nav>
       <!-- nav bar -->
       <!-- main section  -->
 
-      <section
-        class="main-section"
-        data-aos="zoom-in"
-        id="home"
-      >
+      <section class="main-section" data-aos="zoom-in" id="home">
         <h1>
-          <span>NITHIN VUKKUSILA</span> <br />
+          <span id="messenger">NITHIN VUKKUSILA</span> <br/>
           <span>FRONT-END</span> <br />
           <span>WEB DEVELOPER </span>
         </h1>
@@ -252,9 +253,115 @@
       </footer>
     </div>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.min.js"
+      integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+      crossorigin="anonymous"
+    ></script>
+
     <script>
       AOS.init();
+      const navbarToggle = document.querySelector(".navbar-toggle");
+      const navbarMenu = document.querySelector(".navbar-menu");
+
+      navbarToggle.addEventListener("click", () => {
+        navbarToggle.classList.toggle("active");
+        navbarMenu.classList.toggle("menu-active");
+      });
+      var Messenger = function (el) {
+        "use strict";
+        var m = this;
+        m.init = function () {
+          m.codeletters = "1&#*+%?£@§$";
+          m.message = 0;
+          m.current_length = 0;
+          m.fadeBuffer = false;
+          m.messages = ["NITHIN VUKKUSILA"];
+
+          setTimeout(m.animateIn, 100);
+        };
+
+        m.generateRandomString = function (length) {
+          var random_text = "";
+          while (random_text.length < length) {
+            random_text += m.codeletters.charAt(
+              Math.floor(Math.random() * m.codeletters.length)
+            );
+          }
+
+          return random_text;
+        };
+
+        m.animateIn = function () {
+          if (m.current_length < m.messages[m.message].length) {
+            m.current_length = m.current_length + 2;
+            if (m.current_length > m.messages[m.message].length) {
+              m.current_length = m.messages[m.message].length;
+            }
+
+            var message = m.generateRandomString(m.current_length);
+            $(el).html(message);
+
+            setTimeout(m.animateIn, 30);
+          } else {
+            setTimeout(m.animateFadeBuffer, 30);
+          }
+        };
+
+        m.animateFadeBuffer = function () {
+          if (m.fadeBuffer === false) {
+            m.fadeBuffer = [];
+            for (var i = 0; i < m.messages[m.message].length; i++) {
+              m.fadeBuffer.push({
+                c: Math.floor(Math.random() * 12) + 1,
+                l: m.messages[m.message].charAt(i),
+              });
+            }
+          }
+
+          var do_cycles = false;
+          var message = "";
+
+          for (var i = 0; i < m.fadeBuffer.length; i++) {
+            var fader = m.fadeBuffer[i];
+            if (fader.c > 0) {
+              do_cycles = true;
+              fader.c--;
+              message += m.codeletters.charAt(
+                Math.floor(Math.random() * m.codeletters.length)
+              );
+            } else {
+              message += fader.l;
+            }
+          }
+
+          $(el).html(message);
+
+          if (do_cycles === true) {
+            setTimeout(m.animateFadeBuffer, 50);
+          } else {
+            setTimeout(m.cycleText, 2000);
+          }
+        };
+
+        m.cycleText = function () {
+          m.message = m.message + 1;
+          if (m.message >= m.messages.length) {
+            m.message = 0;
+          }
+
+          m.current_length = 0;
+          m.fadeBuffer = false;
+          $(el).html("");
+
+          setTimeout(m.animateIn, 200);
+        };
+
+        m.init();
+      };
+
+      console.clear();
+      var messenger = new Messenger($("#messenger"));
     </script>
-    <script src="https://smtpjs.com/v3/smtp.js"></script>
   </body>
 </html>
