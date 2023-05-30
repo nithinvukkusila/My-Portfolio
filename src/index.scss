@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;500;600;700;800;900&display=swap');
+
+
+$background-color:  black; // #1A120B;
+$secondary-color: yellow;
+$text-color: white;
+$border-radius: 30px;
+$small-font-size: 0.5em;
+$primary-font-size: 1em;
+$secondary-font-size: 1.5em;
+$jumbo-font-size: 3em;
+$section-heading-font-size: 1.2em;
+
+
+body {
+  margin: 0;
+  font-family: 'Inconsolata', monospace, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: $text-color;
+}
+
+
