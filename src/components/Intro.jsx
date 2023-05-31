@@ -1,7 +1,5 @@
 import MainSkills from "./snippets/MainSkills";
-import profilePic from "../assets/icons/profilePic.jpeg";
 import video1 from "../assets/gifs/video1.gif"
-import { useEffect, useRef } from "react";
 const Intro = () => {
 
   return (

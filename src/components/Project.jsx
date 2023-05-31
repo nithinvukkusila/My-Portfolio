@@ -5,7 +5,7 @@ const Project = ({ project }) => {
     return (
         <div className="project">
           <div className="project-image" data-aos="fade-up" data-aos-duration="1500">
-            <img src={project.image} />
+            <img src={project.image} alt="project pic" />
           </div>
           <div className="about-project"  data-aos="fade-up" data-aos-duration="1500">
             <h2 className="project-heading" data-aos="fade-up" data-aos-duration="1500"> {project.heading}</h2>

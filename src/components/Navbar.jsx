@@ -1,7 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircle, faHome } from "@fortawesome/free-solid-svg-icons";
+import { faHome } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
-import { faSlack } from "@fortawesome/free-brands-svg-icons";
 const Navbar = () => {
   const [showMenu, setShowMenu] = useState(false);
   function toggleMenu  ()  {
